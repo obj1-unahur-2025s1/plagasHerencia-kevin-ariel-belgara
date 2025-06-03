@@ -1,9 +1,22 @@
-import example.pepita
+import plagas.*
+import elementos.*
 
-describe "group of tests for pepita" {
-
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+describe "group of tests for plagas" {
+  const cucas1 = new Cucarachas(pesoPromedioBicho = 10,poblacion=160)
+  const cucas2 = new Cucarachas(pesoPromedioBicho = 8,poblacion=160)
+  const huerta1 = new Huerta(produccion = 18)
+  const hogar1 = new Hogar()
+  const mos1
+  test "huerta1 es atacada por cucarachas de nivel de daño 80,que transmite enfermedades,por lo que pierde las 18 unidades de produccion que tenia,quedandose con 0" {
+    cucas1.atacar(huerta1)
+    assert.equals(0, huerta1.produccion())
   }
+   test "huerta1 es atacada por cucarachas de nivel de daño 80,que no transmite enfermedades,por lo que pierde las 18 unidades de produccion que tenia,quedandose con 0" {
+    cucas2.atacar(huerta1)
+    assert.equals(10, huerta1.produccion())
+  }
+  test"80 es el poder de daño de cucas2"{
+    assert.equals(80,cucas2.daño())
+  }"
 
 }
